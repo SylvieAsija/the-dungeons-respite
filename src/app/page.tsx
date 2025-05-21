@@ -17,6 +17,7 @@ import {
   Twitter,
   Users,
 } from 'lucide-react';
+import './globals.css';
 
 export default function LandingPage() {
   return (
