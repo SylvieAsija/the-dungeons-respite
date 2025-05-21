@@ -1,6 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@components/button';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 import {
   ArrowRight,
   BookOpen,
@@ -21,7 +37,7 @@ import './globals.css';
 
 export default function LandingPage() {
   return (
-    <div className='flex min-h-[100dvh] flex-col bg-[#f2e8cf] text-[#594a3c] font-serif relative'>
+    <div className='flex min-h-[100dvh] flex-col bg-background text-foreground font-serif relative'>
       {/* Paper texture overlay */}
       <div
         className='fixed inset-0 pointer-events-none z-0 opacity-30'
@@ -32,47 +48,47 @@ export default function LandingPage() {
       ></div>
 
       {/* Header - Tavern Sign Style */}
-      <header className='sticky top-0 z-50 w-full border-b-2 border-[#b8a99a] bg-[#f2e8cf]/95 backdrop-blur supports-[backdrop-filter]:bg-[#f2e8cf]/60 shadow-md relative'>
+      <header className='sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm relative'>
         <div className='container flex h-20 items-center justify-between'>
           <div className='flex items-center gap-3'>
             <div className='relative h-12 w-12'>
-              <Shield className='h-12 w-12 text-[#8c7851]' />
+              <Shield className='h-12 w-12 text-primary' />
               <div className='absolute inset-0 flex items-center justify-center'>
-                <span className='text-xs font-bold text-[#f2e8cf]'>LT</span>
+                <span className='text-xs font-bold text-background'>LT</span>
               </div>
             </div>
-            <span className='text-2xl font-bold text-[#594a3c]'>
+            <span className='text-2xl font-bold text-foreground'>
               The Local Tavern
             </span>
           </div>
           <nav className='hidden md:flex items-center gap-6'>
             <Link
               href='#features'
-              className='text-sm font-medium text-[#8c7851] hover:text-[#594a3c]'
+              className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Menu
             </Link>
             <Link
               href='#how-it-works'
-              className='text-sm font-medium text-[#8c7851] hover:text-[#594a3c]'
+              className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               How It Works
             </Link>
             <Link
               href='#testimonials'
-              className='text-sm font-medium text-[#8c7851] hover:text-[#594a3c]'
+              className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Patrons
             </Link>
             <Link
               href='#pricing'
-              className='text-sm font-medium text-[#8c7851] hover:text-[#594a3c]'
+              className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Run A Tab
             </Link>
             <Link
               href='#faq'
-              className='text-sm font-medium text-[#8c7851] hover:text-[#594a3c]'
+              className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Questions
             </Link>
@@ -80,11 +96,11 @@ export default function LandingPage() {
           <div className='flex items-center gap-4'>
             <Link
               href='#'
-              className='text-sm font-medium text-[#8c7851] hover:text-[#594a3c]'
+              className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Enter
             </Link>
-            <Button className='bg-[#8c7851] hover:bg-[#6e5f3d] text-[#f2e8cf] border border-[#b8a99a]'>
+            <Button>
               Reserve A Seat
               <ArrowRight className='ml-2 h-4 w-4' />
             </Button>
@@ -108,51 +124,47 @@ export default function LandingPage() {
             <div className='grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]'>
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='space-y-2'>
-                  <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-[#594a3c]'>
+                  <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-foreground'>
                     Welcome to The Local Tavern
                   </h1>
-                  <p className='max-w-[600px] text-[#8c7851] md:text-xl'>
+                  <p className='max-w-[600px] text-muted-foreground md:text-xl'>
                     Where adventurers gather to forge legendary campaigns,
                     manage their quests, and share tales of glory around the
                     hearth.
                   </p>
                 </div>
                 <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                  <Button
-                    size='lg'
-                    className='bg-[#8c7851] hover:bg-[#6e5f3d] text-[#f2e8cf] border border-[#b8a99a]'
-                  >
+                  <Button size='lg'>
                     Begin Your Journey
                     <ArrowRight className='ml-2 h-4 w-4' />
                   </Button>
                   <Button
                     variant='outline'
                     size='lg'
-                    className='border-[#b8a99a] text-[#8c7851] hover:bg-[#e8ddc3] hover:text-[#594a3c]'
                   >
                     See The Tavern
                   </Button>
                 </div>
-                <div className='flex items-center gap-2 text-sm text-[#8c7851]'>
-                  <CheckCircle className='h-4 w-4 text-[#8c7851]' />
+                <div className='flex items-center gap-2 text-sm text-muted-foreground'>
+                  <CheckCircle className='h-4 w-4 text-primary' />
                   <span>No coin required to enter</span>
-                  <CheckCircle className='ml-2 h-4 w-4 text-[#8c7851]' />
+                  <CheckCircle className='ml-2 h-4 w-4 text-primary' />
                   <span>Free tables available</span>
-                  <CheckCircle className='ml-2 h-4 w-4 text-[#8c7851]' />
+                  <CheckCircle className='ml-2 h-4 w-4 text-primary' />
                   <span>Leave anytime</span>
                 </div>
               </div>
               <div className='flex items-center justify-center'>
-                <div className='relative w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden shadow-2xl shadow-[#8c7851]/20 border-2 border-[#b8a99a] bg-[#e8ddc3]'>
+                <Card className='w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden shadow-xl border-2'>
                   <Image
                     src='/placeholder.svg?height=500&width=600'
                     width={600}
                     height={500}
                     alt='The Local Tavern App Screenshot'
-                    className='object-cover'
+                    className='object-cover w-full h-full'
                     priority
                   />
-                </div>
+                </Card>
               </div>
             </div>
           </div>
@@ -161,7 +173,7 @@ export default function LandingPage() {
         {/* Features Section - Menu Board Style */}
         <section
           id='features'
-          className='w-full py-12 md:py-24 lg:py-32 bg-[#e8ddc3] relative'
+          className='w-full py-12 md:py-24 lg:py-32 bg-muted relative'
         >
           <div
             className='absolute inset-0 pointer-events-none opacity-20'
@@ -173,127 +185,148 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-[#8c7851]/20 px-3 py-1 text-sm text-[#594a3c] border border-[#b8a99a]'>
+                <Badge
+                  variant='outline'
+                  className='bg-primary/10 text-foreground border-primary/20'
+                >
                   Our Menu
-                </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#594a3c]'>
+                </Badge>
+                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
                   What's On Tap At The Local Tavern
                 </h2>
-                <p className='max-w-[900px] text-[#8c7851] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Everything you need to run epic campaigns with your fellow
                   adventurers.
                 </p>
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-2 lg:grid-cols-3'>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <Shield className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Campaign Management
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Keep track of all your adventures. Like a well-organized quest
-                  log for the seasoned adventurer.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <FileText className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Character Scrolls
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Upload your character parchments or create new ones. Track
-                  your stats, inventory, and abilities.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <BookOpen className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Tale Keeper
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Record the stories of your adventures. Share with your party
-                  or keep your Dungeon Master secrets.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <Map className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Cartographer's Table
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Draw detailed maps of your realms. Import existing maps or
-                  craft new ones from blank parchment.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <Users className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Figurine Collection
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Place and move tokens representing heroes, villains, and
-                  creatures across your tavern table.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <PenTool className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Scribe's Quill
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  All changes appear instantly for everyone at the table. Edit
-                  your scrolls, tales, and maps together.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <Globe className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Mist of Mystery
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Reveal areas of your maps as adventurers explore. Keep the
-                  unknown shrouded in magical fog.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <MessageSquare className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Tavern Chat
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Whisper to your companions, shout across the tavern, or point
-                  out interesting spots on your maps.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='rounded-full bg-[#8c7851]/20 p-3 border border-[#b8a99a]'>
-                  <Dice5 className='h-6 w-6 text-[#8c7851]' />
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Fortune Teller
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Track who goes first in battle and roll magical dice that
-                  everyone at the table can see.
-                </p>
-              </div>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <Shield className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Campaign Management</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Keep track of all your adventures. Like a well-organized
+                    quest log for the seasoned adventurer.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <FileText className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Character Scrolls</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Upload your character parchments or create new ones. Track
+                    your stats, inventory, and abilities.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <BookOpen className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Tale Keeper</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Record the stories of your adventures. Share with your party
+                    or keep your Dungeon Master secrets.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <Map className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Cartographer's Table</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Draw detailed maps of your realms. Import existing maps or
+                    craft new ones from blank parchment.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <Users className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Figurine Collection</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Place and move tokens representing heroes, villains, and
+                    creatures across your tavern table.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <PenTool className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Scribe's Quill</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    All changes appear instantly for everyone at the table. Edit
+                    your scrolls, tales, and maps together.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <Globe className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Mist of Mystery</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Reveal areas of your maps as adventurers explore. Keep the
+                    unknown shrouded in magical fog.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <MessageSquare className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Tavern Chat</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Whisper to your companions, shout across the tavern, or
+                    point out interesting spots on your maps.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
+                    <Dice5 className='h-6 w-6 text-primary' />
+                  </div>
+                  <CardTitle>Fortune Teller</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Track who goes first in battle and roll magical dice that
+                    everyone at the table can see.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -301,7 +334,7 @@ export default function LandingPage() {
         {/* How It Works Section - Tavern Keeper Explaining */}
         <section
           id='how-it-works'
-          className='w-full py-12 md:py-24 lg:py-32 bg-[#f2e8cf] relative'
+          className='w-full py-12 md:py-24 lg:py-32 bg-background relative'
         >
           <div
             className='absolute inset-0 pointer-events-none opacity-20'
@@ -313,66 +346,75 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-[#8c7851]/20 px-3 py-1 text-sm text-[#594a3c] border border-[#b8a99a]'>
+                <Badge
+                  variant='outline'
+                  className='bg-primary/10 text-foreground border-primary/20'
+                >
                   Tavern Rules
-                </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#594a3c]'>
+                </Badge>
+                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
                   How to Join Our Merry Band
                 </h2>
-                <p className='max-w-[900px] text-[#8c7851] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Getting started at The Local Tavern is as easy as ordering an
                   ale. Follow these simple steps.
                 </p>
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3'>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='flex h-12 w-12 items-center justify-center rounded-full bg-[#8c7851] text-xl font-bold text-[#f2e8cf] border border-[#b8a99a]'>
-                  1
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Sign the Ledger
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Create your account in our guest book. No payment required for
-                  a basic seat at the table.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='flex h-12 w-12 items-center justify-center rounded-full bg-[#8c7851] text-xl font-bold text-[#f2e8cf] border border-[#b8a99a]'>
-                  2
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Start Your Tale
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Begin a new campaign, draw your maps, and invite fellow
-                  adventurers to join your table.
-                </p>
-              </div>
-              <div className='flex flex-col items-center space-y-4 rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='flex h-12 w-12 items-center justify-center rounded-full bg-[#8c7851] text-xl font-bold text-[#f2e8cf] border border-[#b8a99a]'>
-                  3
-                </div>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Gather 'Round
-                </h3>
-                <p className='text-center text-[#8c7851]'>
-                  Begin your adventure with friends near and far. Enjoy seamless
-                  collaboration around our magical table.
-                </p>
-              </div>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground border border-border mb-4'>
+                    1
+                  </div>
+                  <CardTitle>Sign the Ledger</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Create your account in our guest book. No payment required
+                    for a basic seat at the table.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground border border-border mb-4'>
+                    2
+                  </div>
+                  <CardTitle>Start Your Tale</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Begin a new campaign, draw your maps, and invite fellow
+                    adventurers to join your table.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground border border-border mb-4'>
+                    3
+                  </div>
+                  <CardTitle>Gather 'Round</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className='text-center text-muted-foreground'>
+                    Begin your adventure with friends near and far. Enjoy
+                    seamless collaboration around our magical table.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
-            <div className='mx-auto max-w-5xl'>
-              <div className='relative h-[300px] sm:h-[400px] md:h-[500px] rounded-lg overflow-hidden border-2 border-[#b8a99a] shadow-xl shadow-[#8c7851]/20 bg-[#e8ddc3]'>
+            <div className='mx-auto max-w-5xl mt-12'>
+              <Card className='w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden shadow-xl border-2'>
                 <Image
                   src='/placeholder.svg?height=500&width=1000'
                   width={1000}
                   height={500}
                   alt='The Local Tavern Interface'
-                  className='object-cover'
+                  className='object-cover w-full h-full'
                 />
-              </div>
+              </Card>
             </div>
           </div>
         </section>
@@ -380,7 +422,7 @@ export default function LandingPage() {
         {/* Testimonials Section - Tavern Patrons */}
         <section
           id='testimonials'
-          className='w-full py-12 md:py-24 lg:py-32 bg-[#e8ddc3] relative'
+          className='w-full py-12 md:py-24 lg:py-32 bg-muted relative'
         >
           <div
             className='absolute inset-0 pointer-events-none opacity-20'
@@ -392,103 +434,116 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-[#8c7851]/20 px-3 py-1 text-sm text-[#594a3c] border border-[#b8a99a]'>
+                <Badge
+                  variant='outline'
+                  className='bg-primary/10 text-foreground border-primary/20'
+                >
                   Tavern Tales
-                </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#594a3c]'>
+                </Badge>
+                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
                   Stories From Our Regular Patrons
                 </h2>
-                <p className='max-w-[900px] text-[#8c7851] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Hear what adventurers and dungeon masters have to say about
                   The Local Tavern.
                 </p>
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2'>
-              <div className='flex flex-col justify-between rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='space-y-4'>
-                  <p className='text-[#8c7851]'>
-                    "The Local Tavern has transformed how I run my campaigns.
-                    The map tools and token movement have made combat so much
-                    more engaging for my players."
-                  </p>
-                </div>
-                <div className='flex items-center gap-4 pt-4'>
-                  <div className='h-10 w-10 rounded-full bg-[#8c7851]/20 border border-[#b8a99a] flex items-center justify-center'>
-                    <span className='text-[#594a3c] font-bold'>M</span>
-                  </div>
-                  <div>
-                    <p className='font-medium text-[#594a3c]'>
-                      Marcus the Wise
-                    </p>
-                    <p className='text-sm text-[#8c7851]'>
-                      Dungeon Master for 10+ years
+              <Card className='bg-card border-border'>
+                <CardContent className='pt-6'>
+                  <div className='space-y-4'>
+                    <p className='text-muted-foreground'>
+                      "The Local Tavern has transformed how I run my campaigns.
+                      The map tools and token movement have made combat so much
+                      more engaging for my players."
                     </p>
                   </div>
-                </div>
-              </div>
-              <div className='flex flex-col justify-between rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='space-y-4'>
-                  <p className='text-[#8c7851]'>
-                    "The character scrolls are a blessing from the gods. No more
-                    erasing holes in my parchment when my health changes for the
-                    10th time in battle!"
-                  </p>
-                </div>
-                <div className='flex items-center gap-4 pt-4'>
-                  <div className='h-10 w-10 rounded-full bg-[#8c7851]/20 border border-[#b8a99a] flex items-center justify-center'>
-                    <span className='text-[#594a3c] font-bold'>E</span>
+                  <div className='flex items-center gap-4 pt-6 mt-6 border-t border-border'>
+                    <div className='h-10 w-10 rounded-full bg-primary/10 border border-border flex items-center justify-center'>
+                      <span className='text-foreground font-bold'>M</span>
+                    </div>
+                    <div>
+                      <p className='font-medium text-foreground'>
+                        Marcus the Wise
+                      </p>
+                      <p className='text-sm text-muted-foreground'>
+                        Dungeon Master for 10+ years
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className='font-medium text-[#594a3c]'>Eliza the Bard</p>
-                    <p className='text-sm text-[#8c7851]'>
-                      Player in 3 active campaigns
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardContent className='pt-6'>
+                  <div className='space-y-4'>
+                    <p className='text-muted-foreground'>
+                      "The character scrolls are a blessing from the gods. No
+                      more erasing holes in my parchment when my health changes
+                      for the 10th time in battle!"
                     </p>
                   </div>
-                </div>
-              </div>
-              <div className='flex flex-col justify-between rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='space-y-4'>
-                  <p className='text-[#8c7851]'>
-                    "The mist of mystery has made exploration so much more
-                    exciting. My players are genuinely surprised when they
-                    discover new areas of the dungeon."
-                  </p>
-                </div>
-                <div className='flex items-center gap-4 pt-4'>
-                  <div className='h-10 w-10 rounded-full bg-[#8c7851]/20 border border-[#b8a99a] flex items-center justify-center'>
-                    <span className='text-[#594a3c] font-bold'>D</span>
+                  <div className='flex items-center gap-4 pt-6 mt-6 border-t border-border'>
+                    <div className='h-10 w-10 rounded-full bg-primary/10 border border-border flex items-center justify-center'>
+                      <span className='text-foreground font-bold'>E</span>
+                    </div>
+                    <div>
+                      <p className='font-medium text-foreground'>
+                        Eliza the Bard
+                      </p>
+                      <p className='text-sm text-muted-foreground'>
+                        Player in 3 active campaigns
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className='font-medium text-[#594a3c]'>
-                      Dwarven Dungeoneer
-                    </p>
-                    <p className='text-sm text-[#8c7851]'>
-                      DM for a party of 6
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className='flex flex-col justify-between rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='space-y-4'>
-                  <p className='text-[#8c7851]'>
-                    "The fortune teller and dice roller have sped up our combat
-                    significantly. We spend more time adventuring and less time
-                    managing the game mechanics."
-                  </p>
-                </div>
-                <div className='flex items-center gap-4 pt-4'>
-                  <div className='h-10 w-10 rounded-full bg-[#8c7851]/20 border border-[#b8a99a] flex items-center justify-center'>
-                    <span className='text-[#594a3c] font-bold'>R</span>
-                  </div>
-                  <div>
-                    <p className='font-medium text-[#594a3c]'>Ranger Rick</p>
-                    <p className='text-sm text-[#8c7851]'>
-                      Player since D&D 3.5
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardContent className='pt-6'>
+                  <div className='space-y-4'>
+                    <p className='text-muted-foreground'>
+                      "The mist of mystery has made exploration so much more
+                      exciting. My players are genuinely surprised when they
+                      discover new areas of the dungeon."
                     </p>
                   </div>
-                </div>
-              </div>
+                  <div className='flex items-center gap-4 pt-6 mt-6 border-t border-border'>
+                    <div className='h-10 w-10 rounded-full bg-primary/10 border border-border flex items-center justify-center'>
+                      <span className='text-foreground font-bold'>D</span>
+                    </div>
+                    <div>
+                      <p className='font-medium text-foreground'>
+                        Dwarven Dungeoneer
+                      </p>
+                      <p className='text-sm text-muted-foreground'>
+                        DM for a party of 6
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardContent className='pt-6'>
+                  <div className='space-y-4'>
+                    <p className='text-muted-foreground'>
+                      "The fortune teller and dice roller have sped up our
+                      combat significantly. We spend more time adventuring and
+                      less time managing the game mechanics."
+                    </p>
+                  </div>
+                  <div className='flex items-center gap-4 pt-6 mt-6 border-t border-border'>
+                    <div className='h-10 w-10 rounded-full bg-primary/10 border border-border flex items-center justify-center'>
+                      <span className='text-foreground font-bold'>R</span>
+                    </div>
+                    <div>
+                      <p className='font-medium text-foreground'>Ranger Rick</p>
+                      <p className='text-sm text-muted-foreground'>
+                        Player since D&D 3.5
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -496,7 +551,7 @@ export default function LandingPage() {
         {/* Pricing Section - Run A Tab */}
         <section
           id='pricing'
-          className='w-full py-12 md:py-24 lg:py-32 bg-[#f2e8cf] relative'
+          className='w-full py-12 md:py-24 lg:py-32 bg-background relative'
         >
           <div
             className='absolute inset-0 pointer-events-none opacity-20'
@@ -508,184 +563,209 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-[#8c7851]/20 px-3 py-1 text-sm text-[#594a3c] border border-[#b8a99a]'>
+                <Badge
+                  variant='outline'
+                  className='bg-primary/10 text-foreground border-primary/20'
+                >
                   Run A Tab
-                </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#594a3c]'>
+                </Badge>
+                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
                   Choose Your Seat At The Table
                 </h2>
-                <p className='max-w-[900px] text-[#8c7851] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Fair prices for adventurers of all levels. All plans include a
                   fortnight's free trial.
                 </p>
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3'>
-              <div className='flex flex-col rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='space-y-2'>
-                  <h3 className='text-2xl font-bold text-[#594a3c]'>
-                    Commoner
-                  </h3>
-                  <p className='text-[#8c7851]'>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <CardTitle>Commoner</CardTitle>
+                  <CardDescription>
                     Perfect for casual players and new dungeon masters
-                  </p>
-                </div>
-                <div className='mt-4 flex items-baseline text-3xl font-bold text-[#594a3c]'>
-                  0
-                  <span className='ml-1 text-base font-medium text-[#8c7851]'>
-                    {' '}
-                    gold pieces/moon
-                  </span>
-                </div>
-                <ul className='mt-6 space-y-3'>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>1 active campaign</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Up to 5 adventurers</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Basic map tools</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Character scrolls</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Tale keeper</span>
-                  </li>
-                </ul>
-                <Button className='mt-8 bg-[#8c7851] hover:bg-[#6e5f3d] text-[#f2e8cf] border border-[#b8a99a]'>
-                  Claim Your Seat
-                </Button>
-              </div>
-              <div className='flex flex-col rounded-lg border-2 border-[#8c7851] bg-[#f2e8cf] p-6 shadow-lg shadow-[#8c7851]/20 relative'>
-                <div className='absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#8c7851] text-[#f2e8cf] px-4 py-1 rounded-full text-sm font-bold border border-[#b8a99a]'>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className='mt-4 flex items-baseline text-3xl font-bold text-foreground'>
+                    0
+                    <span className='ml-1 text-base font-medium text-muted-foreground'>
+                      {' '}
+                      gold pieces/moon
+                    </span>
+                  </div>
+                  <ul className='mt-6 space-y-3'>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        1 active campaign
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Up to 5 adventurers
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Basic map tools
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Character scrolls
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>Tale keeper</span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className='w-full'>Claim Your Seat</Button>
+                </CardFooter>
+              </Card>
+              <Card className='bg-card border-primary relative'>
+                <div className='absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-bold'>
                   Most Popular
                 </div>
-                <div className='space-y-2'>
-                  <h3 className='text-2xl font-bold text-[#594a3c]'>
-                    Guildmaster
-                  </h3>
-                  <p className='text-[#8c7851]'>
+                <CardHeader>
+                  <CardTitle>Guildmaster</CardTitle>
+                  <CardDescription>
                     For serious DMs running multiple campaigns
-                  </p>
-                </div>
-                <div className='mt-4 flex items-baseline text-3xl font-bold text-[#594a3c]'>
-                  10
-                  <span className='ml-1 text-base font-medium text-[#8c7851]'>
-                    {' '}
-                    gold pieces/moon
-                  </span>
-                </div>
-                <ul className='mt-6 space-y-3'>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>5 active campaigns</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      Up to 10 adventurers per campaign
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className='mt-4 flex items-baseline text-3xl font-bold text-foreground'>
+                    10
+                    <span className='ml-1 text-base font-medium text-muted-foreground'>
+                      {' '}
+                      gold pieces/moon
                     </span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Advanced map tools</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Mist of mystery</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Interactive objects</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      1GB storage for maps and scrolls
-                    </span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      Priority messenger raven
-                    </span>
-                  </li>
-                </ul>
-                <Button className='mt-8 bg-[#8c7851] hover:bg-[#6e5f3d] text-[#f2e8cf] border border-[#b8a99a]'>
-                  Claim Your Seat
-                </Button>
-              </div>
-              <div className='flex flex-col rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <div className='space-y-2'>
-                  <h3 className='text-2xl font-bold text-[#594a3c]'>
-                    Archmage
-                  </h3>
-                  <p className='text-[#8c7851]'>
+                  </div>
+                  <ul className='mt-6 space-y-3'>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        5 active campaigns
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Up to 10 adventurers per campaign
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Advanced map tools
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Mist of mystery
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Interactive objects
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        1GB storage for maps and scrolls
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Priority messenger raven
+                      </span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className='w-full'>Claim Your Seat</Button>
+                </CardFooter>
+              </Card>
+              <Card className='bg-card border-border'>
+                <CardHeader>
+                  <CardTitle>Archmage</CardTitle>
+                  <CardDescription>
                     For professional DMs and large adventuring parties
-                  </p>
-                </div>
-                <div className='mt-4 flex items-baseline text-3xl font-bold text-[#594a3c]'>
-                  25
-                  <span className='ml-1 text-base font-medium text-[#8c7851]'>
-                    {' '}
-                    gold pieces/moon
-                  </span>
-                </div>
-                <ul className='mt-6 space-y-3'>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Unlimited campaigns</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      Unlimited adventurers
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className='mt-4 flex items-baseline text-3xl font-bold text-foreground'>
+                    25
+                    <span className='ml-1 text-base font-medium text-muted-foreground'>
+                      {' '}
+                      gold pieces/moon
                     </span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      Premium map enchantments
-                    </span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Advanced DM tools</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      Custom figurine creation
-                    </span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      5GB storage for maps and scrolls
-                    </span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>Arcane API access</span>
-                  </li>
-                  <li className='flex items-center'>
-                    <CheckCircle className='mr-2 h-4 w-4 text-[#8c7851]' />
-                    <span className='text-[#8c7851]'>
-                      24/7 priority messenger raven
-                    </span>
-                  </li>
-                </ul>
-                <Button className='mt-8 bg-[#8c7851] hover:bg-[#6e5f3d] text-[#f2e8cf] border border-[#b8a99a]'>
-                  Claim Your Seat
-                </Button>
-              </div>
+                  </div>
+                  <ul className='mt-6 space-y-3'>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Unlimited campaigns
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Unlimited adventurers
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Premium map enchantments
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Advanced DM tools
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Custom figurine creation
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        5GB storage for maps and scrolls
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        Arcane API access
+                      </span>
+                    </li>
+                    <li className='flex items-center'>
+                      <CheckCircle className='mr-2 h-4 w-4 text-primary' />
+                      <span className='text-muted-foreground'>
+                        24/7 priority messenger raven
+                      </span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <CardFooter>
+                  <Button className='w-full'>Claim Your Seat</Button>
+                </CardFooter>
+              </Card>
             </div>
           </div>
         </section>
@@ -693,7 +773,7 @@ export default function LandingPage() {
         {/* FAQ Section - Questions at the Bar */}
         <section
           id='faq'
-          className='w-full py-12 md:py-24 lg:py-32 bg-[#e8ddc3] relative'
+          className='w-full py-12 md:py-24 lg:py-32 bg-muted relative'
         >
           <div
             className='absolute inset-0 pointer-events-none opacity-20'
@@ -705,76 +785,83 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-[#8c7851]/20 px-3 py-1 text-sm text-[#594a3c] border border-[#b8a99a]'>
+                <Badge
+                  variant='outline'
+                  className='bg-primary/10 text-foreground border-primary/20'
+                >
                   Questions for the Barkeep
-                </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#594a3c]'>
+                </Badge>
+                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
                   Common Questions
                 </h2>
-                <p className='max-w-[900px] text-[#8c7851] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Everything you need to know about The Local Tavern.
                 </p>
               </div>
             </div>
-            <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2'>
-              <div className='rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Do I need to download any scrolls or potions?
-                </h3>
-                <p className='mt-2 text-[#8c7851]'>
-                  No, The Local Tavern is entirely accessible through magical
-                  scrying orbs (web browsers). You can access it from any modern
-                  device.
-                </p>
-              </div>
-              <div className='rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Can I bring my existing character scrolls?
-                </h3>
-                <p className='mt-2 text-[#8c7851]'>
-                  Yes! You can upload your parchments, and our scribes will
-                  attempt to transfer the information. You can also manually
-                  inscribe your character details.
-                </p>
-              </div>
-              <div className='rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  How does the scribe's quill work?
-                </h3>
-                <p className='mt-2 text-[#8c7851]'>
-                  All changes made by the DM or adventurers update instantly for
-                  everyone at the table. This includes map movements, character
-                  scroll updates, and tales.
-                </p>
-              </div>
-              <div className='rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Can I use my own maps?
-                </h3>
-                <p className='mt-2 text-[#8c7851]'>
-                  You can upload your own maps in common image formats or create
-                  new ones using our cartographer's table.
-                </p>
-              </div>
-              <div className='rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Is there a limit to how many adventurers can join?
-                </h3>
-                <p className='mt-2 text-[#8c7851]'>
-                  The Commoner plan supports up to 5 adventurers per campaign.
-                  The Guildmaster plan supports up to 10 adventurers per
-                  campaign, and the Archmage plan has no limits.
-                </p>
-              </div>
-              <div className='rounded-lg border-2 border-[#b8a99a] bg-[#f2e8cf] p-6 shadow-md'>
-                <h3 className='text-xl font-bold text-[#594a3c]'>
-                  Can I cancel my tab anytime?
-                </h3>
-                <p className='mt-2 text-[#8c7851]'>
-                  Yes, you can close your tab at any time. Your seat will remain
-                  reserved until the end of your billing cycle.
-                </p>
-              </div>
+            <div className='mx-auto max-w-5xl py-12'>
+              <Accordion
+                type='single'
+                collapsible
+                className='w-full'
+              >
+                <AccordionItem value='item-1'>
+                  <AccordionTrigger>
+                    Do I need to download any scrolls or potions?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    No, The Local Tavern is entirely accessible through magical
+                    scrying orbs (web browsers). You can access it from any
+                    modern device.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='item-2'>
+                  <AccordionTrigger>
+                    Can I bring my existing character scrolls?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Yes! You can upload your parchments, and our scribes will
+                    attempt to transfer the information. You can also manually
+                    inscribe your character details.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='item-3'>
+                  <AccordionTrigger>
+                    How does the scribe's quill work?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    All changes made by the DM or adventurers update instantly
+                    for everyone at the table. This includes map movements,
+                    character scroll updates, and tales.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='item-4'>
+                  <AccordionTrigger>Can I use my own maps?</AccordionTrigger>
+                  <AccordionContent>
+                    You can upload your own maps in common image formats or
+                    create new ones using our cartographer's table.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='item-5'>
+                  <AccordionTrigger>
+                    Is there a limit to how many adventurers can join?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    The Commoner plan supports up to 5 adventurers per campaign.
+                    The Guildmaster plan supports up to 10 adventurers per
+                    campaign, and the Archmage plan has no limits.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value='item-6'>
+                  <AccordionTrigger>
+                    Can I cancel my tab anytime?
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    Yes, you can close your tab at any time. Your seat will
+                    remain reserved until the end of your billing cycle.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </section>
@@ -782,7 +869,7 @@ export default function LandingPage() {
         {/* Final CTA Section - Join the Tavern */}
         <section
           id='cta'
-          className='w-full py-12 md:py-24 lg:py-32 bg-[#f2e8cf] relative'
+          className='w-full py-12 md:py-24 lg:py-32 bg-background relative'
         >
           <div
             className='absolute inset-0 pointer-events-none opacity-20'
@@ -794,31 +881,27 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#594a3c]'>
+                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
                   Ready to pull up a chair?
                 </h2>
-                <p className='max-w-[600px] text-[#8c7851] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Join thousands of adventurers who have found their home at The
                   Local Tavern.
                 </p>
               </div>
               <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                <Button
-                  size='lg'
-                  className='bg-[#8c7851] hover:bg-[#6e5f3d] text-[#f2e8cf] border border-[#b8a99a]'
-                >
+                <Button size='lg'>
                   Begin Your Adventure
                   <ArrowRight className='ml-2 h-4 w-4' />
                 </Button>
                 <Button
                   variant='outline'
                   size='lg'
-                  className='border-[#b8a99a] text-[#8c7851] hover:bg-[#e8ddc3] hover:text-[#594a3c]'
                 >
                   Request a Tour
                 </Button>
               </div>
-              <p className='text-sm text-[#8c7851]'>
+              <p className='text-sm text-muted-foreground'>
                 No coin required. Free tables available forever.
               </p>
             </div>
@@ -827,7 +910,7 @@ export default function LandingPage() {
       </main>
 
       {/* Footer - Tavern Cellar */}
-      <footer className='w-full border-t-2 border-[#b8a99a] bg-[#e8ddc3] py-12 relative'>
+      <footer className='w-full border-t border-border bg-muted py-12 relative'>
         <div
           className='absolute inset-0 pointer-events-none opacity-20'
           style={{
@@ -839,33 +922,33 @@ export default function LandingPage() {
           <div className='grid gap-8 lg:grid-cols-4'>
             <div className='space-y-4'>
               <div className='flex items-center gap-2'>
-                <Shield className='h-8 w-8 text-[#8c7851]' />
-                <span className='text-xl font-bold text-[#594a3c]'>
+                <Shield className='h-8 w-8 text-primary' />
+                <span className='text-xl font-bold text-foreground'>
                   The Local Tavern
                 </span>
               </div>
-              <p className='text-sm text-[#8c7851]'>
+              <p className='text-sm text-muted-foreground'>
                 Where adventurers gather to forge legendary campaigns, manage
                 their quests, and share tales of glory around the hearth.
               </p>
               <div className='flex gap-4'>
                 <Link
                   href='#'
-                  className='text-[#8c7851] hover:text-[#594a3c]'
+                  className='text-muted-foreground hover:text-foreground'
                 >
                   <Twitter className='h-5 w-5' />
                   <span className='sr-only'>Twitter</span>
                 </Link>
                 <Link
                   href='#'
-                  className='text-[#8c7851] hover:text-[#594a3c]'
+                  className='text-muted-foreground hover:text-foreground'
                 >
                   <Github className='h-5 w-5' />
                   <span className='sr-only'>GitHub</span>
                 </Link>
                 <Link
                   href='#'
-                  className='text-[#8c7851] hover:text-[#594a3c]'
+                  className='text-muted-foreground hover:text-foreground'
                 >
                   <Crown className='h-5 w-5' />
                   <span className='sr-only'>Discord</span>
@@ -873,14 +956,14 @@ export default function LandingPage() {
               </div>
             </div>
             <div className='space-y-4'>
-              <h3 className='text-lg font-medium text-[#594a3c]'>
+              <h3 className='text-lg font-medium text-foreground'>
                 Tavern Menu
               </h3>
               <ul className='space-y-2 text-sm'>
                 <li>
                   <Link
                     href='#features'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Features
                   </Link>
@@ -888,7 +971,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#pricing'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Pricing
                   </Link>
@@ -896,7 +979,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Future Brews
                   </Link>
@@ -904,7 +987,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Updates
                   </Link>
@@ -912,12 +995,12 @@ export default function LandingPage() {
               </ul>
             </div>
             <div className='space-y-4'>
-              <h3 className='text-lg font-medium text-[#594a3c]'>Resources</h3>
+              <h3 className='text-lg font-medium text-foreground'>Resources</h3>
               <ul className='space-y-2 text-sm'>
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Spell Book
                   </Link>
@@ -925,7 +1008,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Tutorials
                   </Link>
@@ -933,7 +1016,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Bard's Tales
                   </Link>
@@ -941,7 +1024,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Adventurer's Guild
                   </Link>
@@ -949,14 +1032,14 @@ export default function LandingPage() {
               </ul>
             </div>
             <div className='space-y-4'>
-              <h3 className='text-lg font-medium text-[#594a3c]'>
+              <h3 className='text-lg font-medium text-foreground'>
                 The Proprietors
               </h3>
               <ul className='space-y-2 text-sm'>
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     About Us
                   </Link>
@@ -964,7 +1047,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Send a Raven
                   </Link>
@@ -972,7 +1055,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Privacy Scroll
                   </Link>
@@ -980,7 +1063,7 @@ export default function LandingPage() {
                 <li>
                   <Link
                     href='#'
-                    className='text-[#8c7851] hover:text-[#594a3c]'
+                    className='text-muted-foreground hover:text-foreground'
                   >
                     Terms of Service
                   </Link>
@@ -988,7 +1071,8 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
-          <div className='mt-12 border-t border-[#b8a99a] pt-8 text-center text-sm text-[#8c7851]'>
+          <Separator className='my-8' />
+          <div className='text-center text-sm text-muted-foreground'>
             <p>
               © {new Date().getFullYear()} The Local Tavern. All rights reserved
               by royal decree.
