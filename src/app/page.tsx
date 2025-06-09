@@ -38,7 +38,6 @@ import './globals.css';
 export default function LandingPage() {
   return (
     <div className='flex min-h-[100dvh] flex-col bg-background text-foreground font-serif relative'>
-      {/* Paper texture overlay */}
       <div
         className='fixed inset-0 pointer-events-none z-0 opacity-30'
         style={{
@@ -47,45 +46,60 @@ export default function LandingPage() {
         }}
       ></div>
 
-      {/* Header - Tavern Sign Style */}
-      <header className='sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm relative'>
+      <header className='fixed top-0 z-50 w-full border-b border-border bg-background shadow-sm'>
         <div className='container flex h-20 items-center justify-between'>
           <div className='flex items-center gap-3'>
-            <div className='relative h-12 w-12'>
+            <div className='relative ml-6 h-12 w-12'>
               <Shield className='h-12 w-12 text-primary' />
-              <div className='absolute inset-0 flex items-center justify-center'>
-                <span className='text-xs font-bold text-background'>LT</span>
+              <div className='absolute inset-0 flex items-center justify-center pointer-events-none z-10'>
+                DR
               </div>
             </div>
             <span className='text-2xl font-bold text-foreground'>
-              The Local Tavern
+              The Dungeon's Respite
             </span>
           </div>
-          <nav className='hidden md:flex items-center gap-6'>
+          <nav className='flex items-center gap-3 space-x-3 '>
             <Link
               href='#features'
               className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Menu
             </Link>
+            <Separator
+              className='h-4'
+              orientation='vertical'
+            />
             <Link
               href='#how-it-works'
               className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               How It Works
             </Link>
+            <Separator
+              className='h-4'
+              orientation='vertical'
+            />
             <Link
               href='#testimonials'
               className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Patrons
             </Link>
+            <Separator
+              className='h-4'
+              orientation='vertical'
+            />
             <Link
               href='#pricing'
               className='text-sm font-medium text-muted-foreground hover:text-foreground'
             >
               Run A Tab
             </Link>
+            <Separator
+              className='h-4'
+              orientation='vertical'
+            />
             <Link
               href='#faq'
               className='text-sm font-medium text-muted-foreground hover:text-foreground'
@@ -93,44 +107,27 @@ export default function LandingPage() {
               Questions
             </Link>
           </nav>
-          <div className='flex items-center gap-4'>
-            <Link
-              href='#'
-              className='text-sm font-medium text-muted-foreground hover:text-foreground'
-            >
-              Enter
-            </Link>
+          <div className='flex items-center gap-4 mr-6'>
             <Button>
               Reserve A Seat
-              <ArrowRight className='ml-2 h-4 w-4' />
+              <ArrowRight className='ml-2 h-4 w-' />
             </Button>
           </div>
         </div>
       </header>
 
-      <main className='flex-1 relative z-10'>
-        {/* Hero Section - Vintage Paper Style */}
+      <main className='mt-20 flex-1 z-10'>
         <section className='w-full py-12 md:py-24 lg:py-32 xl:py-48 relative overflow-hidden'>
-          <div className='absolute inset-0 z-0 opacity-10'>
-            <Image
-              src='/placeholder.svg?height=1080&width=1920'
-              alt='Vintage paper texture'
-              fill
-              className='object-cover'
-              priority
-            />
-          </div>
           <div className='container relative z-10 px-4 md:px-6'>
             <div className='grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]'>
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='space-y-2'>
                   <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-foreground'>
-                    Welcome to The Local Tavern
+                    Welcome to The Dungeon's Respite
                   </h1>
                   <p className='max-w-[600px] text-muted-foreground md:text-xl'>
                     Where adventurers gather to forge legendary campaigns,
-                    manage their quests, and share tales of glory around the
-                    hearth.
+                    manage their quests, and share tales of glory over a pint
                   </p>
                 </div>
                 <div className='flex flex-col gap-2 min-[400px]:flex-row'>
@@ -142,19 +139,19 @@ export default function LandingPage() {
                     variant='outline'
                     size='lg'
                   >
-                    See The Tavern
+                    Explore The Tavern
                   </Button>
                 </div>
                 <div className='flex items-center gap-2 text-sm text-muted-foreground'>
                   <CheckCircle className='h-4 w-4 text-primary' />
                   <span>No coin required to enter</span>
                   <CheckCircle className='ml-2 h-4 w-4 text-primary' />
-                  <span>Free tables available</span>
+                  <span>Free tables always available</span>
                   <CheckCircle className='ml-2 h-4 w-4 text-primary' />
                   <span>Leave anytime</span>
                 </div>
               </div>
-              <div className='flex items-center justify-center'>
+              {/* <div className='flex items-center justify-center'>
                 <Card className='w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden shadow-xl border-2'>
                   <Image
                     src='/placeholder.svg?height=500&width=600'
@@ -165,12 +162,11 @@ export default function LandingPage() {
                     priority
                   />
                 </Card>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
 
-        {/* Features Section - Menu Board Style */}
         <section
           id='features'
           className='w-full py-12 md:py-24 lg:py-32 bg-muted relative'
@@ -182,7 +178,7 @@ export default function LandingPage() {
               backgroundRepeat: 'repeat',
             }}
           ></div>
-          <div className='container px-4 md:px-6 relative'>
+          <div className='container md:px-6 relative'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
                 <Badge
@@ -192,59 +188,47 @@ export default function LandingPage() {
                   Our Menu
                 </Badge>
                 <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
-                  What's On Tap At The Local Tavern
+                  Check out what's On Tap At The Dungeon's Respite
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                  Everything you need to run epic campaigns with your fellow
-                  adventurers.
+                  Everything you need to run campaigns with your fellow
+                  adventurers
                 </p>
               </div>
             </div>
-            <div className='mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-2 lg:grid-cols-3'>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+            <div className='grid py-12 grid-cols-2 justify-items-center gap-y-6'>
+              <Card className='bg-card border-border w-5/6 ml-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
-                    <Shield className='h-6 w-6 text-primary' />
+                    <Shield className='w-6 h-6 text-primary' />
                   </div>
-                  <CardTitle>Campaign Management</CardTitle>
+                  <CardTitle className='text-center'>
+                    Campaign Management
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
                     Keep track of all your adventures. Like a well-organized
-                    quest log for the seasoned adventurer.
+                    quest log to manage information between sessions.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 mr-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <FileText className='h-6 w-6 text-primary' />
                   </div>
-                  <CardTitle>Character Scrolls</CardTitle>
+                  <CardTitle>Character Sheets</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
-                    Upload your character parchments or create new ones. Track
-                    your stats, inventory, and abilities.
+                    Upload your character sheet or create new virtual ones.
+                    Track your stats, inventory, and abilities.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
-                  <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
-                    <BookOpen className='h-6 w-6 text-primary' />
-                  </div>
-                  <CardTitle>Tale Keeper</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className='text-center text-muted-foreground'>
-                    Record the stories of your adventures. Share with your party
-                    or keep your Dungeon Master secrets.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 ml-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <Map className='h-6 w-6 text-primary' />
                   </div>
@@ -253,12 +237,12 @@ export default function LandingPage() {
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
                     Draw detailed maps of your realms. Import existing maps or
-                    craft new ones from blank parchment.
+                    craft new ones with our custom map builder.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 mr-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <Users className='h-6 w-6 text-primary' />
                   </div>
@@ -266,13 +250,13 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
-                    Place and move tokens representing heroes, villains, and
-                    creatures across your tavern table.
+                    Place and move tokens representing adventurers, and NPC's
+                    across your tavern table.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 ml-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <PenTool className='h-6 w-6 text-primary' />
                   </div>
@@ -281,12 +265,12 @@ export default function LandingPage() {
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
                     All changes appear instantly for everyone at the table. Edit
-                    your scrolls, tales, and maps together.
+                    your character sheets, token positions, and maps together.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 mr-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <Globe className='h-6 w-6 text-primary' />
                   </div>
@@ -294,13 +278,13 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
-                    Reveal areas of your maps as adventurers explore. Keep the
-                    unknown shrouded in magical fog.
+                    Hide and Reveal areas of your maps as adventurers explore.
+                    Keep the unknown shrouded in magical fog.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 ml-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <MessageSquare className='h-6 w-6 text-primary' />
                   </div>
@@ -308,22 +292,22 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
-                    Whisper to your companions, shout across the tavern, or
-                    point out interesting spots on your maps.
+                    Communicate with individual party members or the entire
+                    group for interactive roleplay experiences.
                   </p>
                 </CardContent>
               </Card>
-              <Card className='bg-card border-border'>
-                <CardHeader>
+              <Card className='bg-card border-border w-5/6 mr-6'>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border border-border mb-4'>
                     <Dice5 className='h-6 w-6 text-primary' />
                   </div>
-                  <CardTitle>Fortune Teller</CardTitle>
+                  <CardTitle>Fate and Fortune</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className='text-center text-muted-foreground'>
-                    Track who goes first in battle and roll magical dice that
-                    everyone at the table can see.
+                    Track initiative and roll virtual dice that everyone at the
+                    table can see.
                   </p>
                 </CardContent>
               </Card>
@@ -357,13 +341,13 @@ export default function LandingPage() {
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Getting started at The Local Tavern is as easy as ordering an
-                  ale. Follow these simple steps.
+                  pint. Follow these simple steps.
                 </p>
               </div>
             </div>
-            <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-3'>
+            <div className='mx-auto grid max-w-5xl gap-6 py-12 grid-cols-3'>
               <Card className='bg-card border-border'>
-                <CardHeader>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground border border-border mb-4'>
                     1
                   </div>
@@ -377,7 +361,7 @@ export default function LandingPage() {
                 </CardContent>
               </Card>
               <Card className='bg-card border-border'>
-                <CardHeader>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground border border-border mb-4'>
                     2
                   </div>
@@ -391,7 +375,7 @@ export default function LandingPage() {
                 </CardContent>
               </Card>
               <Card className='bg-card border-border'>
-                <CardHeader>
+                <CardHeader className='flex flex-col items-center justify-center'>
                   <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground border border-border mb-4'>
                     3
                   </div>
@@ -405,7 +389,7 @@ export default function LandingPage() {
                 </CardContent>
               </Card>
             </div>
-            <div className='mx-auto max-w-5xl mt-12'>
+            {/* <div className='mx-auto max-w-5xl mt-12'>
               <Card className='w-full h-[300px] sm:h-[400px] md:h-[500px] overflow-hidden shadow-xl border-2'>
                 <Image
                   src='/placeholder.svg?height=500&width=1000'
@@ -415,7 +399,7 @@ export default function LandingPage() {
                   className='object-cover w-full h-full'
                 />
               </Card>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -424,7 +408,8 @@ export default function LandingPage() {
           id='testimonials'
           className='w-full py-12 md:py-24 lg:py-32 bg-muted relative'
         >
-          <div
+          <div>MAYBE TBD FOR IF I HAVE USER TESTIMONIALS</div>
+          {/*           <div
             className='absolute inset-0 pointer-events-none opacity-20'
             style={{
               backgroundImage: "url('/placeholder.svg?height=500&width=500')",
@@ -545,7 +530,7 @@ export default function LandingPage() {
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </div> */}
         </section>
 
         {/* Pricing Section - Run A Tab */}
@@ -553,7 +538,8 @@ export default function LandingPage() {
           id='pricing'
           className='w-full py-12 md:py-24 lg:py-32 bg-background relative'
         >
-          <div
+          <div>TBD FOR WHEN I EVENTUALLY HAVE SOME MINOR MONETIZATION</div>
+          {/* <div
             className='absolute inset-0 pointer-events-none opacity-20'
             style={{
               backgroundImage: "url('/placeholder.svg?height=500&width=500')",
@@ -767,7 +753,7 @@ export default function LandingPage() {
                 </CardFooter>
               </Card>
             </div>
-          </div>
+          </div> */}
         </section>
 
         {/* FAQ Section - Questions at the Bar */}
@@ -792,10 +778,10 @@ export default function LandingPage() {
                   Questions for the Barkeep
                 </Badge>
                 <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight text-foreground'>
-                  Common Questions
+                  Common Questions (these are kinda just placeholders)
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                  Everything you need to know about The Local Tavern.
+                  Everything you need to know about The Dungeon's Respite.
                 </p>
               </div>
             </div>
@@ -807,39 +793,39 @@ export default function LandingPage() {
               >
                 <AccordionItem value='item-1'>
                   <AccordionTrigger>
-                    Do I need to download any scrolls or potions?
+                    Do I need to download anything?
                   </AccordionTrigger>
                   <AccordionContent>
-                    No, The Local Tavern is entirely accessible through magical
-                    scrying orbs (web browsers). You can access it from any
-                    modern device.
+                    No, The Dungeon's Respite is entirely accessible through
+                    your web browser. You can access it from any modern device.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value='item-2'>
                   <AccordionTrigger>
-                    Can I bring my existing character scrolls?
+                    Can I bring my existing character sheet?
                   </AccordionTrigger>
                   <AccordionContent>
-                    Yes! You can upload your parchments, and our scribes will
-                    attempt to transfer the information. You can also manually
-                    inscribe your character details.
+                    Yes! You can upload your character sheet, and our scribes
+                    will attempt to transfer the information. You can also
+                    manually inscribe your character details if not everything
+                    is able to be transferred.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value='item-3'>
                   <AccordionTrigger>
-                    How does the scribe's quill work?
+                    How does the Scribe's Quill work?
                   </AccordionTrigger>
                   <AccordionContent>
                     All changes made by the DM or adventurers update instantly
                     for everyone at the table. This includes map movements,
-                    character scroll updates, and tales.
+                    character sheet updates, and the Mist of Mystery.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value='item-4'>
                   <AccordionTrigger>Can I use my own maps?</AccordionTrigger>
                   <AccordionContent>
                     You can upload your own maps in common image formats or
-                    create new ones using our cartographer's table.
+                    create new ones using our Cartographer's Table.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value='item-5'>
@@ -847,14 +833,16 @@ export default function LandingPage() {
                     Is there a limit to how many adventurers can join?
                   </AccordionTrigger>
                   <AccordionContent>
-                    The Commoner plan supports up to 5 adventurers per campaign.
+                    TBD ONCE I FIGURE OUT HOW MUCH HOSTING COSTS AND HOW MANY
+                    PEOPLE ARE ACTUALLY GONNA USE THIS
+                    {/* The Commoner plan supports up to 5 adventurers per campaign.
                     The Guildmaster plan supports up to 10 adventurers per
-                    campaign, and the Archmage plan has no limits.
+                    campaign, and the Archmage plan has no limits. */}
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value='item-6'>
                   <AccordionTrigger>
-                    Can I cancel my tab anytime?
+                    Can I cancel my tab anytime? (for eventual monetization)
                   </AccordionTrigger>
                   <AccordionContent>
                     Yes, you can close your tab at any time. Your seat will
@@ -885,8 +873,8 @@ export default function LandingPage() {
                   Ready to pull up a chair?
                 </h2>
                 <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-                  Join thousands of adventurers who have found their home at The
-                  Local Tavern.
+                  Join our merry band of adventurers who have found their home
+                  at The Dungeon's Respite!
                 </p>
               </div>
               <div className='flex flex-col gap-2 min-[400px]:flex-row'>
@@ -922,161 +910,162 @@ export default function LandingPage() {
           <div className='grid gap-8 lg:grid-cols-4'>
             <div className='space-y-4'>
               <div className='flex items-center gap-2'>
-                <Shield className='h-8 w-8 text-primary' />
+                <div className='flex items-center gap-3'>
+                  <div className='relative ml-2 h-12 w-12'>
+                    <Shield className='h-12 w-12 text-primary' />
+                    <div className='absolute inset-0 flex items-center justify-center pointer-events-none z-10'>
+                      DR
+                    </div>
+                  </div>
+                </div>
                 <span className='text-xl font-bold text-foreground'>
-                  The Local Tavern
+                  The Dungeon's Respite
                 </span>
               </div>
               <p className='text-sm text-muted-foreground'>
                 Where adventurers gather to forge legendary campaigns, manage
-                their quests, and share tales of glory around the hearth.
+                their quests, and share tales of glory over a pint
               </p>
               <div className='flex gap-4'>
                 <Link
-                  href='#'
-                  className='text-muted-foreground hover:text-foreground'
-                >
-                  <Twitter className='h-5 w-5' />
-                  <span className='sr-only'>Twitter</span>
-                </Link>
-                <Link
-                  href='#'
+                  href='https://github.com/SylvieAsija/the-dungeons-respite'
                   className='text-muted-foreground hover:text-foreground'
                 >
                   <Github className='h-5 w-5' />
                   <span className='sr-only'>GitHub</span>
                 </Link>
-                <Link
-                  href='#'
+                {/* <Link
+                  href=''
                   className='text-muted-foreground hover:text-foreground'
                 >
                   <Crown className='h-5 w-5' />
                   <span className='sr-only'>Discord</span>
-                </Link>
+                </Link> */}
               </div>
             </div>
-            <div className='space-y-4'>
-              <h3 className='text-lg font-medium text-foreground'>
-                Tavern Menu
-              </h3>
-              <ul className='space-y-2 text-sm'>
-                <li>
-                  <Link
-                    href='#features'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#pricing'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Future Brews
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Updates
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className='space-y-4'>
-              <h3 className='text-lg font-medium text-foreground'>Resources</h3>
-              <ul className='space-y-2 text-sm'>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Spell Book
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Tutorials
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Bard's Tales
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Adventurer's Guild
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div className='space-y-4'>
-              <h3 className='text-lg font-medium text-foreground'>
-                The Proprietors
-              </h3>
-              <ul className='space-y-2 text-sm'>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Send a Raven
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Privacy Scroll
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href='#'
-                    className='text-muted-foreground hover:text-foreground'
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
+            <div className='grid grid-cols-3'>
+              <div className='space-y-4'>
+                <h3 className='text-lg font-medium text-foreground'>
+                  Tavern Menu
+                </h3>
+                <ul className='space-y-2 text-sm'>
+                  <li>
+                    <Link
+                      href='#features'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Features
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#pricing'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Future Brews
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Updates
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className='space-y-4'>
+                <h3 className='text-lg font-medium text-foreground'>
+                  Resources
+                </h3>
+                <ul className='space-y-2 text-sm'>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Spell Book
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Tutorials
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Bard's Tales
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Adventurer's Guild
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className='space-y-4'>
+                <h3 className='text-lg font-medium text-foreground'>
+                  The Proprietors
+                </h3>
+                <ul className='space-y-2 text-sm'>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Contact Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Privacy Scroll
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href='#'
+                      className='text-muted-foreground hover:text-foreground'
+                    >
+                      Terms of Service
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <Separator className='my-8' />
           <div className='text-center text-sm text-muted-foreground'>
-            <p>
-              © {new Date().getFullYear()} The Local Tavern. All rights reserved
-              by royal decree.
-            </p>
+            <p>{new Date().getFullYear()} The Dungeon's Respite</p>
           </div>
         </div>
       </footer>
